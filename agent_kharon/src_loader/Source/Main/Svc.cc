@@ -4,7 +4,7 @@
 SERVICE_STATUS ServiceStatus = {0};
 SERVICE_STATUS_HANDLE ServiceStatusHandle = NULL;
 
-VOID WINAPI ServiceMain( ULONG argc, CHAR *argv );
+VOID WINAPI ServiceMain( DWORD argc, LPSTR *argv );
 VOID WINAPI ServiceCtrlHandler( ULONG Ctrl );
 VOID RunKharon( VOID );
 
@@ -34,7 +34,7 @@ VOID RunKharon(VOID) {
     }
 }
 
-VOID WINAPI ServiceMain( ULONG argc, CHAR *argv ) {
+VOID WINAPI ServiceMain( DWORD argc, LPSTR *argv ) {
     ServiceStatusHandle = RegisterServiceCtrlHandler( TEXT("Kharon"), ServiceCtrlHandler );
 
     if ( ! ServiceStatusHandle ) {
